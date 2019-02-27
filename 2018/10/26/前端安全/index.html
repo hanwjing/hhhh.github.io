@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。">
+<meta name="description" content="XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。">
 <meta name="keywords" content="前端安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端安全">
 <meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2018/10/26/前端安全/index.html">
 <meta property="og:site_name" content="韩韩韩韩小静静">
-<meta property="og:description" content="XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。">
+<meta property="og:description" content="XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T12:22:54.273Z">
+<meta property="og:updated_time" content="2019-02-27T12:31:49.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全">
-<meta name="twitter:description" content="XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。">
+<meta name="twitter:description" content="XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。">
 
 
 
@@ -300,8 +300,9 @@
       
 
       
-        <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h3 id="XSS是什么"><a href="#XSS是什么" class="headerlink" title="XSS是什么"></a>XSS是什么</h3><p>XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。<br><br>比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。<br><br>这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。<br></p>
+        <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h3 id="XSS是什么"><a href="#XSS是什么" class="headerlink" title="XSS是什么"></a>XSS是什么</h3><p>XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。<br><br>比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。<br></p>
 <a id="more"></a>
+<p>这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。<br></p>
 <p>对于跨站脚本攻击，黑客界共识是：跨站脚本攻击是新型的“缓冲区溢出攻击“，而JavaScript是新型的“ShellCode”。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>能注入恶意的HTML/JavaScript代码到用户浏览的网页上，从而达到Cookie资料窃取、会话劫持、钓鱼欺骗等攻击。<br>&lt;攻击代码不一定（非要）在 <script></script> 中&gt;</p>
