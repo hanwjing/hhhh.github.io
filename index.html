@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2019/02/06/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2019/02/06/跨域问题的解决/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="April Han">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/hhhh.github.io/2019/02/06/hello-world/" itemprop="url">跨域问题的解决方案  --随写笔记</a></h1>
+                <a class="post-title-link" href="/hhhh.github.io/2019/02/06/跨域问题的解决/" itemprop="url">跨域问题的解决方案  --随写笔记</a></h1>
         
 
         <div class="post-meta">
@@ -299,33 +299,21 @@
 
       
         
-          
-            <p>这几天在写vue做毕业设计的时候，遇到了一个问题 –&gt;跨域，跨域是做前端的必然会遇到一个问题</p>
+          <p>这几天在写vue做毕业设计的时候，遇到了一个问题 –&gt;跨域，跨域是做前端的必然会遇到一个问题</p>
 <p>在了解跨域问题的解决方案之前，我们先说一下同源策略</p>
 <h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><pre><code>什么叫同源呢，就是协议域名端口号完全一致。只有同源的地址才可以相互通过AJAX 的方式请求。
 
 同源策略，是由Netscape提出的一个著名的安全策略，现在所有支持JS的浏览器都会使用这个策略。同源策略（Same origin policy）是一种约定，它是[浏览器](https://baike.baidu.com/item/%E6%B5%8F%E8%A7%88%E5%99%A8/213911)最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。
 
 比如说：http://127.0.0.1:3000     协议：http   域名：127.0.0.1   端口号：3000
-
-&lt;!-- more --&gt;
-</code></pre><h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><pre><code>跨域，就是从一个域名的网页去请求另一个域名的资源时，协议域名端口号有任何一个不同，就是跨域
-</code></pre><h2 id="如何解决跨域问题"><a href="#如何解决跨域问题" class="headerlink" title="如何解决跨域问题"></a>如何解决跨域问题</h2><ol>
-<li><h5 id="jsonp-跨域"><a href="#jsonp-跨域" class="headerlink" title="jsonp 跨域"></a>jsonp 跨域</h5><pre><code>原理就是在客户端动态插入 script 标签，script标签的src属性就是服务端api接口的地址，服务端的这个地址返回一段带有函数调用的 JavaScript 全局函数调用的脚本，将原本需要返回给客户端的数据传递进去。
-</code></pre></li>
-<li><h5 id="h5的新概念postMessage"><a href="#h5的新概念postMessage" class="headerlink" title="h5的新概念postMessage"></a>h5的新概念postMessage</h5><pre><code>我们通过window.postMessage的方式进行使用，并监听其发送的消息；
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Window .postMessage（message，targetOrigin，[ transfer ]）;</span><br><span class="line">	message：要发送的消息</span><br><span class="line">	targetOrigin：可以是文字字符串&quot;*&quot;（表示没有首选项），也可以是URI</span><br><span class="line">	transfer：可选，是与消息一起传输的Transferable对象序列</span><br></pre></td></tr></table></figure>
-<p>对将接收消息的窗口的引用</p>
-</li>
-<li><h5 id="后台修改header-（node）"><a href="#后台修改header-（node）" class="headerlink" title="后台修改header  （node）"></a>后台修改header  （node）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 将所有api的请求响应content-type设置为application/json</span><br><span class="line">app.all(&apos;/api/*&apos;,(req,res,next)=&gt;&#123;</span><br><span class="line">    //设置允许跨域响应报文头</span><br><span class="line">    //设置跨域</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);		//允许所有来源访问</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;*&quot;); 	//允许访问的方式 </span><br><span class="line">    res.setHeader(&apos;Content-Type&apos;,&apos;application/json;charset=utf-8&apos;);</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><h5 id="vue-中解决跨域问题"><a href="#vue-中解决跨域问题" class="headerlink" title="vue  中解决跨域问题"></a>vue  中解决跨域问题</h5><p> 在config/index.js中添加如下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dev:&#123;</span><br><span class="line">    proxyTable: &#123; </span><br><span class="line">        &apos;/api&apos;: &#123;  			//axios中给请求添加&quot;/api&quot;，于代理标识</span><br><span class="line">            target: &apos;http://f.apiplus.cn&apos;, //目标地址</span><br><span class="line">            changeOrigin: true,   //改变目标</span><br><span class="line">            pathRewrite: &#123; </span><br><span class="line">                &apos;^/api&apos;: &apos;&apos;   //重写请求路劲，把/api用空替换掉</span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>都是自己学习总结，如有错误，请多担待~.~</p>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hhhh.github.io/2019/02/06/跨域问题的解决/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -684,7 +672,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017-2019 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
