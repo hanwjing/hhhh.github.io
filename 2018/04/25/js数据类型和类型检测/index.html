@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hhhh.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/hhhh.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/hhhh.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hhhh.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hhhh.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hhhh.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/hhhh.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JavaScript数据类型和类型检测JavaScript数据类型JavaScript数据类型主要分为两大类： 1.基本数据类型：字符串(String)，数字(Number)，布尔(Boolean)，空(Null)，未定义(Undefined)，(Symbol) 注:Symbol 是 ES6 引入的一种新的原始数据类型，表示独一无二的值，在此不作详细介绍。 2.复杂数据类型 (引用数据类型)：对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据类型和类型检测">
+<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2018/04/25/js数据类型和类型检测/index.html">
+<meta property="og:site_name" content="韩韩韩韩小静静">
+<meta property="og:description" content="JavaScript数据类型和类型检测JavaScript数据类型JavaScript数据类型主要分为两大类： 1.基本数据类型：字符串(String)，数字(Number)，布尔(Boolean)，空(Null)，未定义(Undefined)，(Symbol) 注:Symbol 是 ES6 引入的一种新的原始数据类型，表示独一无二的值，在此不作详细介绍。 2.复杂数据类型 (引用数据类型)：对象">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-27T12:25:39.014Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数据类型和类型检测">
+<meta name="twitter:description" content="JavaScript数据类型和类型检测JavaScript数据类型JavaScript数据类型主要分为两大类： 1.基本数据类型：字符串(String)，数字(Number)，布尔(Boolean)，空(Null)，未定义(Undefined)，(Symbol) 注:Symbol 是 ES6 引入的一种新的原始数据类型，表示独一无二的值，在此不作详细介绍。 2.复杂数据类型 (引用数据类型)：对象">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hhhh.github.io/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2018/04/25/js数据类型和类型检测/">
+
+
+
+
+
+  <title>JavaScript数据类型和类型检测 | 韩韩韩韩小静静</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hhhh.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">韩韩韩韩小静静</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hhhh.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hhhh.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2018/04/25/js数据类型和类型检测/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="April Han">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hhhh.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="韩韩韩韩小静静">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript数据类型和类型检测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T20:57:52+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JavaScript数据类型和类型检测"><a href="#JavaScript数据类型和类型检测" class="headerlink" title="JavaScript数据类型和类型检测"></a>JavaScript数据类型和类型检测</h1><h2 id="JavaScript数据类型"><a href="#JavaScript数据类型" class="headerlink" title="JavaScript数据类型"></a>JavaScript数据类型</h2><p>JavaScript数据类型主要分为两大类：</p>
+<p>1.基本数据类型：字符串(String)，数字(Number)，布尔(Boolean)，空(Null)，未定义(Undefined)，(Symbol)</p>
+<p>注:Symbol 是 ES6 引入的一种新的原始数据类型，表示独一无二的值，在此不作详细介绍。</p>
+<p>2.复杂数据类型 (引用数据类型)：对象(Object)<br><a id="more"></a></p>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><h4 id="String-amp-Number"><a href="#String-amp-Number" class="headerlink" title="String&amp;Number"></a>String&amp;Number</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x;               // x 为 undefined</span><br><span class="line">var x = 1;           // x 为 number</span><br><span class="line">var x = &quot;hi&quot;;      // x 为 string</span><br></pre></td></tr></table></figure>
+<h4 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h4><p>布尔（逻辑）只能有两个值：true 或 false。</p>
+<h4 id="Null-amp-Undefined"><a href="#Null-amp-Undefined" class="headerlink" title="Null&amp;Undefined"></a>Null&amp;Undefined</h4><p>1.Undefined 表示变量声明了但是没有赋值(未初始化)。</p>
+<p>2.可以通过将变量的值设置为 null 来清空变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var person = null;</span><br><span class="line">console.log(typeof person); // &quot;object&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>除了基本数据类型的数据其他数据都是对象（对象，函数，数组…）。</p>
+<p>函数（Function）,数组（Array）都可以归为对象。</p>
+<p>对象的基本信息：属性，行为（方法）</p>
+<p>对象的类型：1.内置对象（原生对象）=&gt;RegExp，Date，Math…(js语言本身预定义的对象)</p>
+<pre><code>2.宿主对象=&gt;BOM对象：History，Location，Window，Navigate，Screen
+
+                       DOM对象：Body，Style，Meta，Frame，Frameset...
+</code></pre><p>常用的Math内置对象：（Math对象中的属性和方法都是静态的，可以通过构造器名称访问，无需创建对象）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Math.pow(n,m)  n的m次方</span><br><span class="line">Math.sqrt  开根号</span><br><span class="line">Math.abs()  取绝对值</span><br><span class="line">Math.PI  </span><br><span class="line">Math.random()  在[0,1）区间内取随机数</span><br><span class="line">exp:取10到20之间的随机数=&gt;parseInt(Math.random()*10)+10;</span><br><span class="line">Math.cei()   向上取整</span><br><span class="line">Math.floor()   向下取整</span><br><span class="line">Math.round()   四舍五入</span><br></pre></td></tr></table></figure>
+<p>可以通过两种方式访问对象的属性</p>
+<ol>
+<li>obj.key</li>
+<li>obj[“key”]</li>
+</ol>
+<h4 id="创建对象的方式"><a href="#创建对象的方式" class="headerlink" title="创建对象的方式"></a>创建对象的方式</h4><p>1.字面量的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    name:&quot;John&quot;,</span><br><span class="line">    age:50,</span><br><span class="line">    eyeColor:&quot;blue&quot;,</span><br><span class="line">    eat:function()&#123;&#125;,</span><br><span class="line">    sleep:function()&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> 2.通过new object创建对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">obj.name = &quot;Jhon&quot;;</span><br><span class="line">obj.age = 50;</span><br><span class="line">obj.eat = function()&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>缺点：如果要创建多个对象，需要写很多重复代码。</p>
+<p>3.工厂模式创建对象（用函数对第二种方式进行封装，使得相似对象的创建不需要重复代码）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function CreateObject(name,age)&#123;</span><br><span class="line">    var obj = new Object();</span><br><span class="line">        obj.name = &quot;Jhon&quot;;</span><br><span class="line">        obj.age = 50;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>缺点：无法判断出所创建出对象的具体类型。</p>
+<p>4.构造函数创建对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var p1 = new Person(&quot;Jhon&quot;,50);  //实例化</span><br></pre></td></tr></table></figure>
+<p>拓展：遍历数组的方式=&gt;for循环  for(var i=0;i&lt;arr.length;i++){}</p>
+<pre><code>遍历对象的方式=&gt;for...in
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var Person =&#123;</span><br><span class="line">    name: &quot;Jhon&quot;,</span><br><span class="line">    age: 50</span><br><span class="line">&#125;</span><br><span class="line">for(var key in Person)&#123;</span><br><span class="line">    console.log(key + &quot;:&quot; + Person.key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="函数的原型"><a href="#函数的原型" class="headerlink" title="函数的原型"></a>函数的原型</h4><p>原型的作用：可以将对象所有公共的信息（属性和方法）放到原型对象中去。</p>
+<p>如果函数和函数原型中有同名的信息，优先使用对象中的信息。</p>
+<p>函数的原型prototype，_ proto _,以及函数本身的关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var foo = function()&#123;&#125;; =&gt; Function.prototype._ proto _</span><br><span class="line">				        =&gt; Object.prototype._ proto _</span><br><span class="line">				        =&gt; NULL</span><br></pre></td></tr></table></figure>
+<p>函数本身有一个prototype属性——函数原型（对象所有公共的属性和方法，constructor=&gt;指向函数本身）</p>
+<p>函数对象里有一个属性_ proto _=&gt;指向函数原型prototype</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(对象._proto_ === 函数.prototype)  //true</span><br><span class="line">console.log(对象._proto_.constructor == 函数)  //true</span><br><span class="line">console.log(函数.prototype.constructor == 函数)  //true</span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript数据类型检测"><a href="#JavaScript数据类型检测" class="headerlink" title="JavaScript数据类型检测"></a>JavaScript数据类型检测</h2><h3 id="typeof-gt-string"><a href="#typeof-gt-string" class="headerlink" title="typeof=&gt;string"></a>typeof=&gt;string</h3><p>无法判断具体的引用类型数据，如数组</p>
+<p>检测的不管是数组还是正则都返回的是”object”,所以typeof不能判断一个值是否为数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof &quot;&quot;);   //string</span><br><span class="line">console.log(typeof 1);  //number</span><br><span class="line">console.log(typeof true);  //boolean</span><br><span class="line">console.log(typeof null);  //object</span><br><span class="line">console.log(typeof undefined);  //undefined</span><br><span class="line">console.log(typeof []);   //object</span><br><span class="line">console.log(typeof function()&#123;&#125;);   //function</span><br><span class="line">console.log(typeof &#123;&#125;);   //object</span><br></pre></td></tr></table></figure>
+<h3 id="instanceof-gt-boolean"><a href="#instanceof-gt-boolean" class="headerlink" title="instanceof=&gt;boolean"></a>instanceof=&gt;boolean</h3><p>能够判断具体的引用类型（不能用于判断null和undefined）</p>
+<p>基本数据类型的值是不能用instanceof来检测的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;1&quot; instanceof String);   //flase</span><br><span class="line">console.log(new String(&quot;1&quot;) instanceof String);  //true</span><br><span class="line">console.log(1 instanceof Number);   //false</span><br><span class="line">console.log(new Number(1) instanceof Number); //true</span><br><span class="line">console.log(true instanceof Boolean);   //false</span><br><span class="line">console.log(new Boolean(true) instanceof Boolean); //true</span><br><span class="line">console.log([] instanceof Array);  //true</span><br><span class="line">console.log(function()&#123;&#125; instanceof Function);  //true</span><br><span class="line">console.log(&#123;&#125; instanceof Object);  //true</span><br></pre></td></tr></table></figure>
+<h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log((&quot;1&quot;).constructor === String);  //true</span><br><span class="line">console.log((1).constructor === Number);   //true</span><br><span class="line">console.log((true).constructor === Boolean);    //true</span><br><span class="line">console.log(([]).constructor === Array);    //true</span><br><span class="line">console.log((function() &#123;&#125;).constructor === Function);    //true</span><br><span class="line">console.log((&#123;&#125;).constructor === Object);    //true</span><br></pre></td></tr></table></figure>
+<p>constructor不适用情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Fn()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Fn.prototype=new Array();   //函数的原型指向数组</span><br><span class="line"></span><br><span class="line">var f=new Fn();   //实例化</span><br><span class="line"></span><br><span class="line">console.log(f.constructor===Fn);   //false</span><br><span class="line">console.log(f.constructor===Array);   //true</span><br></pre></td></tr></table></figure>
+<h3 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a = Object.prototype.toString;</span><br><span class="line"></span><br><span class="line">console.log(a.call(&quot;aaa&quot;));    //[object String]</span><br><span class="line">console.log(a.call(1));        //[object Number]</span><br><span class="line">console.log(a.call(true));       //[object Boolean]</span><br><span class="line">console.log(a.call(null));       //[object Null]</span><br><span class="line">console.log(a.call(undefined));   //[object Undefined]</span><br><span class="line">console.log(a.call([]));         //[object Array]</span><br><span class="line">console.log(a.call(function() &#123;&#125;));    //[object Function]</span><br><span class="line">console.log(a.call(&#123;&#125;));     //[object Object]</span><br></pre></td></tr></table></figure>
+<h3 id="isNaN-isBoolean…"><a href="#isNaN-isBoolean…" class="headerlink" title="isNaN,isBoolean…"></a>isNaN,isBoolean…</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(isObject(&#123;&#125;));     //true</span><br><span class="line">console.log(isDate(new Date()));    //true</span><br><span class="line">console.log(isBoolean(false));   //true</span><br><span class="line">console.log(isString(1));     //false</span><br><span class="line">console.log(isError(1));      //false</span><br><span class="line">console.log(isError(new Error()));   //true</span><br><span class="line">console.log(isArray([]));     //true</span><br><span class="line">console.log(isArray(1));  //false</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hhhh.github.io/2018/06/05/初识angular/" rel="prev" title="初识angular">
+                初识angular <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">April Han</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/hhhh.github.io/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript数据类型和类型检测"><span class="nav-number">1.</span> <span class="nav-text">JavaScript数据类型和类型检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String-amp-Number"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">String&amp;Number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boolean"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Null-amp-Undefined"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Null&amp;Undefined</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对象的方式"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">创建对象的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的原型"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">函数的原型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript数据类型检测"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript数据类型检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-gt-string"><span class="nav-number">1.2.1.</span> <span class="nav-text">typeof=&gt;string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof-gt-boolean"><span class="nav-number">1.2.2.</span> <span class="nav-text">instanceof=&gt;boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor-NaN"><span class="nav-number">1.2.3.</span> <span class="nav-text">constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toString-call"><span class="nav-number">1.2.4.</span> <span class="nav-text">Object.prototype.toString.call()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isNaN-isBoolean…"><span class="nav-number">1.2.5.</span> <span class="nav-text">isNaN,isBoolean…</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">April Han</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hhhh.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hhhh.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
