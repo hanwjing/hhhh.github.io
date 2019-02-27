@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="前端安全,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="这几天在写vue做毕业设计的时候，遇到了一个问题 –&amp;gt;跨域，跨域是做前端的必然会遇到一个问题 在了解跨域问题的解决方案之前，我们先说一下同源策略 同源策略什么叫同源呢，就是协议域名端口号完全一致。只有同源的地址才可以相互通过AJAX 的方式请求。  同源策略，是由Netscape提出的一个著名的安全策略，现在所有支持JS的浏览器都会使用这个策略。同源策略（Same origin policy">
+<meta name="description" content="XSS CSRF  XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。对于跨站脚本攻击，黑客">
+<meta name="keywords" content="前端安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域问题的解决方案  --随写笔记">
-<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2019/02/06/跨域问题的解决/index.html">
+<meta property="og:title" content="前端安全">
+<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2018/10/26/前端安全/index.html">
 <meta property="og:site_name" content="韩韩韩韩小静静">
-<meta property="og:description" content="这几天在写vue做毕业设计的时候，遇到了一个问题 –&amp;gt;跨域，跨域是做前端的必然会遇到一个问题 在了解跨域问题的解决方案之前，我们先说一下同源策略 同源策略什么叫同源呢，就是协议域名端口号完全一致。只有同源的地址才可以相互通过AJAX 的方式请求。  同源策略，是由Netscape提出的一个著名的安全策略，现在所有支持JS的浏览器都会使用这个策略。同源策略（Same origin policy">
+<meta property="og:description" content="XSS CSRF  XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。对于跨站脚本攻击，黑客">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T11:52:46.652Z">
+<meta property="og:updated_time" content="2019-02-27T12:11:28.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跨域问题的解决方案  --随写笔记">
-<meta name="twitter:description" content="这几天在写vue做毕业设计的时候，遇到了一个问题 –&amp;gt;跨域，跨域是做前端的必然会遇到一个问题 在了解跨域问题的解决方案之前，我们先说一下同源策略 同源策略什么叫同源呢，就是协议域名端口号完全一致。只有同源的地址才可以相互通过AJAX 的方式请求。  同源策略，是由Netscape提出的一个著名的安全策略，现在所有支持JS的浏览器都会使用这个策略。同源策略（Same origin policy">
+<meta name="twitter:title" content="前端安全">
+<meta name="twitter:description" content="XSS CSRF  XSSXSS是什么XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。对于跨站脚本攻击，黑客">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2019/02/06/跨域问题的解决/">
+  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2018/10/26/前端安全/">
 
 
 
 
 
-  <title>跨域问题的解决方案  --随写笔记 | 韩韩韩韩小静静</title>
+  <title>前端安全 | 韩韩韩韩小静静</title>
   
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2019/02/06/跨域问题的解决/">
+    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2018/10/26/前端安全/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="April Han">
@@ -249,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">跨域问题的解决方案  --随写笔记</h1>
+          <h1 class="post-title" itemprop="name headline">前端安全</h1>
         
 
         <div class="post-meta">
@@ -261,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T00:00:00+08:00">
-                2019-02-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-26T00:00:00+08:00">
+                2018-10-26
               </time>
             
 
@@ -299,30 +300,51 @@
       
 
       
-        <p>这几天在写vue做毕业设计的时候，遇到了一个问题 –&gt;跨域，跨域是做前端的必然会遇到一个问题</p>
-<p>在了解跨域问题的解决方案之前，我们先说一下同源策略</p>
-<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><pre><code>什么叫同源呢，就是协议域名端口号完全一致。只有同源的地址才可以相互通过AJAX 的方式请求。
-
-同源策略，是由Netscape提出的一个著名的安全策略，现在所有支持JS的浏览器都会使用这个策略。同源策略（Same origin policy）是一种约定，它是[浏览器](https://baike.baidu.com/item/%E6%B5%8F%E8%A7%88%E5%99%A8/213911)最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。
-
-比如说：http://127.0.0.1:3000     协议：http   域名：127.0.0.1   端口号：3000
-</code></pre><a id="more"></a>
-<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><pre><code>跨域，就是从一个域名的网页去请求另一个域名的资源时，协议域名端口号有任何一个不同，就是跨域
-</code></pre><h2 id="如何解决跨域问题"><a href="#如何解决跨域问题" class="headerlink" title="如何解决跨域问题"></a>如何解决跨域问题</h2><ol>
-<li><h5 id="jsonp-跨域"><a href="#jsonp-跨域" class="headerlink" title="jsonp 跨域"></a>jsonp 跨域</h5><pre><code>原理就是在客户端动态插入 script 标签，script标签的src属性就是服务端api接口的地址，服务端的这个地址返回一段带有函数调用的 JavaScript 全局函数调用的脚本，将原本需要返回给客户端的数据传递进去。
-</code></pre></li>
-<li><h5 id="h5的新概念postMessage"><a href="#h5的新概念postMessage" class="headerlink" title="h5的新概念postMessage"></a>h5的新概念postMessage</h5><pre><code>我们通过window.postMessage的方式进行使用，并监听其发送的消息；
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Window .postMessage（message，targetOrigin，[ transfer ]）;</span><br><span class="line">	message：要发送的消息</span><br><span class="line">	targetOrigin：可以是文字字符串&quot;*&quot;（表示没有首选项），也可以是URI</span><br><span class="line">	transfer：可选，是与消息一起传输的Transferable对象序列</span><br></pre></td></tr></table></figure>
-<p>对将接收消息的窗口的引用</p>
-</li>
-<li><h5 id="后台修改header-（node）"><a href="#后台修改header-（node）" class="headerlink" title="后台修改header  （node）"></a>后台修改header  （node）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 将所有api的请求响应content-type设置为application/json</span><br><span class="line">app.all(&apos;/api/*&apos;,(req,res,next)=&gt;&#123;</span><br><span class="line">    //设置允许跨域响应报文头</span><br><span class="line">    //设置跨域</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);		//允许所有来源访问</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</span><br><span class="line">    res.header(&quot;Access-Control-Allow-Methods&quot;,&quot;*&quot;); 	//允许访问的方式 </span><br><span class="line">    res.setHeader(&apos;Content-Type&apos;,&apos;application/json;charset=utf-8&apos;);</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><h5 id="vue-中解决跨域问题"><a href="#vue-中解决跨域问题" class="headerlink" title="vue  中解决跨域问题"></a>vue  中解决跨域问题</h5><p> 在config/index.js中添加如下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dev:&#123;</span><br><span class="line">    proxyTable: &#123; </span><br><span class="line">        &apos;/api&apos;: &#123;  			//axios中给请求添加&quot;/api&quot;，于代理标识</span><br><span class="line">            target: &apos;http://f.apiplus.cn&apos;, //目标地址</span><br><span class="line">            changeOrigin: true,   //改变目标</span><br><span class="line">            pathRewrite: &#123; </span><br><span class="line">                &apos;^/api&apos;: &apos;&apos;   //重写请求路劲，把/api用空替换掉</span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>都是自己学习总结，如有错误，请多担待~.~</p>
-
+        <ul>
+<li><a href="#XSS">XSS</a></li>
+<li><a href="#CSRF">CSRF</a></li>
+</ul>
+<h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h3 id="XSS是什么"><a href="#XSS是什么" class="headerlink" title="XSS是什么"></a>XSS是什么</h3><p>XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。<br><br>比如这些代码包括HTML代码和客户端脚本。攻击者利用XSS漏洞旁路掉访问控制——例如同源策略(same origin policy)。<br><br>这种类型的漏洞由于被黑客用来编写危害性更大的网络钓鱼(Phishing)攻击而变得广为人知。<br><br>对于跨站脚本攻击，黑客界共识是：跨站脚本攻击是新型的“缓冲区溢出攻击“，而JavaScript是新型的“ShellCode”。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>能注入恶意的HTML/JavaScript代码到用户浏览的网页上，从而达到Cookie资料窃取、会话劫持、钓鱼欺骗等攻击。<br>&lt;攻击代码不一定（非要）在 <script></script> 中&gt;</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ul>
+<li>Web浏览器本身的设计不安全。浏览器能解析和执行JS等代码，但是不会判断该数据和程序代码是否恶意。</li>
+<li>输入和输出是Web应用程序最基本的交互，而且网站的交互功能越来越丰富。如果在这过程中没有做好安全防护，很容易会出现XSS漏洞。</li>
+<li>程序员水平参差不齐，而且大都没有过正规的安全培训，没有相关的安全意识。</li>
+<li>XSS攻击手段灵活多变。</li>
+</ul>
+<h3 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h3><ul>
+<li>盗取各类用户帐号，如机器登录帐号、用户网银帐号、各类管理员帐号</li>
+<li>控制企业数据，包括读取、篡改、添加、删除企业敏感数据的能力</li>
+<li>盗窃企业重要的具有商业价值的资料</li>
+<li>非法转账</li>
+<li>强制发送电子邮件</li>
+<li>网站挂马</li>
+<li>控制受害者机器向其它网站发起攻击</li>
+</ul>
+<h3 id="如何防范"><a href="#如何防范" class="headerlink" title="如何防范"></a>如何防范</h3><ul>
+<li>将重要的cookie标记为http only, 这样的话Javascript 中的document.cookie语句就不能获取到cookie了.</li>
+<li>表单数据规定值的类型，例如：年龄应为只能为int、name只能为字母数字组合。。。。</li>
+<li>对数据进行Html Encode 处理</li>
+<li>过滤或移除特殊的Html标签， 例如: <script>, <iframe> , &lt; for &lt;, &gt; for &gt;, &amp;quot for</li>
+<li>过滤JavaScript 事件的标签。例如 “onclick=”, “onfocus” 等等。</li>
+</ul>
+<p>参考资料：<br><br><a href="https://www.cnblogs.com/phpstudy2015-6/p/6767032.html">https://www.cnblogs.com/phpstudy2015-6/p/6767032.html</a><br><br><a href="https://www.cnblogs.com/443855539-wind/p/6055816.html">https://www.cnblogs.com/443855539-wind/p/6055816.html</a><br><br><a href="https://baike.baidu.com/item/XSS%E6%94%BB%E5%87%BB/954065?fr=aladdin">https://baike.baidu.com/item/XSS%E6%94%BB%E5%87%BB/954065?fr=aladdin</a></p>
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。尽管听起来像跨站脚本（XSS），但它与XSS非常不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击往往不大流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>依靠用户标识危害网站</li>
+<li>利用网站对用户标识的信任</li>
+<li>欺骗用户的浏览器发送HTTP请求给目标站点</li>
+<li>另外可以通过IMG标签会触发一个GET请求，可以利用它来实现CSRF攻击。</li>
+</ul>
+<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><ul>
+<li>通过referer、token或者验证码来检测用户提交。</li>
+<li>尽量不要在页面的链接中暴露用户隐私信息。</li>
+<li>对于用户修改删除等操作最好都使用post操作 。</li>
+<li>避免全站通用的cookie，严格设置cookie的域。</li>
+</ul>
+</script></li></ul>
       
     </div>
     
@@ -337,6 +359,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/hhhh.github.io/tags/前端安全/" rel="tag"># 前端安全</a>
+          
+        </div>
+      
 
       
       
@@ -346,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hhhh.github.io/2018/10/26/前端安全/" rel="next" title="前端安全">
-                <i class="fa fa-chevron-left"></i> 前端安全
+              <a href="/hhhh.github.io/2018/06/05/初识angular/" rel="next" title="初识angular">
+                <i class="fa fa-chevron-left"></i> 初识angular
               </a>
             
           </div>
@@ -356,8 +384,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/hhhh.github.io/2019/02/27/如何用hexo和git搭建个人博客/" rel="prev" title="如何用hexo和git搭建个人博客">
-                如何用hexo和git搭建个人博客 <i class="fa fa-chevron-right"></i>
+              <a href="/hhhh.github.io/2019/02/06/跨域问题的解决/" rel="prev" title="跨域问题的解决方案  --随写笔记">
+                跨域问题的解决方案  --随写笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -481,7 +509,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同源策略"><span class="nav-number">1.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域"><span class="nav-number">2.</span> <span class="nav-text">跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决跨域问题"><span class="nav-number">3.</span> <span class="nav-text">如何解决跨域问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jsonp-跨域"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">jsonp 跨域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#h5的新概念postMessage"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">h5的新概念postMessage</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后台修改header-（node）"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">后台修改header  （node）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vue-中解决跨域问题"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">vue  中解决跨域问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS是什么"><span class="nav-number">1.1.</span> <span class="nav-text">XSS是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原因"><span class="nav-number">1.3.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#危害"><span class="nav-number">1.4.</span> <span class="nav-text">危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何防范"><span class="nav-number">1.5.</span> <span class="nav-text">如何防范</span></a></li></ol></li></ol></div>
             
 
           </div>
