@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hhhh.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/hhhh.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/hhhh.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hhhh.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hhhh.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hhhh.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/hhhh.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="贪吃蛇学js做网页交互的时候，打算做一个小游戏，就是你了，贪吃蛇，嘶~~ 下面开始说流程了（敲黑板—-） 1.  准备阶段下图就是我写好后的画面了（有点丑，看个人喜好调），首先，准备图片，播放暂停，蛇头蛇身，背景大图，小苹果，还有页面进入的开始准备图等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生javascript之 ---- 贪吃蛇">
+<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/index.html">
+<meta property="og:site_name" content="韩韩韩韩小静静">
+<meta property="og:description" content="贪吃蛇学js做网页交互的时候，打算做一个小游戏，就是你了，贪吃蛇，嘶~~ 下面开始说流程了（敲黑板—-） 1.  准备阶段下图就是我写好后的画面了（有点丑，看个人喜好调），首先，准备图片，播放暂停，蛇头蛇身，背景大图，小苹果，还有页面进入的开始准备图等">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://hanwjing.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack3.PNG">
+<meta property="og:image" content="https://hanwjing.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack1.PNG">
+<meta property="og:image" content="https://hanwjing.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack3.PNG">
+<meta property="og:updated_time" content="2019-03-01T11:31:26.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原生javascript之 ---- 贪吃蛇">
+<meta name="twitter:description" content="贪吃蛇学js做网页交互的时候，打算做一个小游戏，就是你了，贪吃蛇，嘶~~ 下面开始说流程了（敲黑板—-） 1.  准备阶段下图就是我写好后的画面了（有点丑，看个人喜好调），首先，准备图片，播放暂停，蛇头蛇身，背景大图，小苹果，还有页面进入的开始准备图等">
+<meta name="twitter:image" content="https://hanwjing.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack3.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hhhh.github.io/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/">
+
+
+
+
+
+  <title>原生javascript之 ---- 贪吃蛇 | 韩韩韩韩小静静</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hhhh.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">韩韩韩韩小静静</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hhhh.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hhhh.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="April Han">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hhhh.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="韩韩韩韩小静静">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原生javascript之 ---- 贪吃蛇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T16:03:46+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="贪吃蛇"><a href="#贪吃蛇" class="headerlink" title="贪吃蛇"></a>贪吃蛇</h1><p>学js做网页交互的时候，打算做一个小游戏，就是你了，贪吃蛇，嘶~~</p>
+<p>下面开始说流程了（敲黑板—-）</p>
+<h3 id="1-准备阶段"><a href="#1-准备阶段" class="headerlink" title="1.  准备阶段"></a>1.  准备阶段</h3><p>下图就是我写好后的画面了（有点丑，看个人喜好调），首先，准备图片，播放暂停，蛇头蛇身，背景大图，小苹果，还有页面进入的开始准备图等</p>
+<p><img src="/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack3.PNG" alt=""></p>
+<a id="more"></a>
+<p><img src="/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack1.PNG" alt=""></p>
+<p><img src="/hhhh.github.io/2019/03/01/原生javascript之-贪吃蛇/snack3.PNG" alt=""></p>
+<h3 id="2-页面大体布局"><a href="#2-页面大体布局" class="headerlink" title="2. 页面大体布局"></a>2. 页面大体布局</h3><p>关于命名规范的，这是个小demo，我没太注意，看下回有时间总结一下前端方面的命名规范</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"startpage"</span> <span class="attr">id</span>=<span class="string">"startpage"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"startbtn"</span> <span class="attr">id</span>=<span class="string">"startbtn"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left-side"</span> <span class="attr">id</span>=<span class="string">"left-side"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/pause01.jpg"</span>  <span class="attr">class</span>=<span class="string">"img1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img/play03.JPG"</span> <span class="attr">class</span>=<span class="string">"img2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"score"</span>&gt;</span></span><br><span class="line">            分数： </span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"score"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bottom"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"loser"</span> <span class="attr">id</span>=<span class="string">"loser"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"con"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"error"</span> <span class="attr">id</span>=<span class="string">"error"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"loserscore"</span> <span class="attr">id</span>=<span class="string">"loserscore"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-页面样式"><a href="#3-页面样式" class="headerlink" title="3. 页面样式"></a>3. 页面样式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">*&#123;<span class="attribute">margin</span>: <span class="number">0</span>;<span class="attribute">padding</span>: <span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">	<span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'img/photo02.jpg'</span>);<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">background-repeat</span>: no-repeat;<span class="attribute">background-attachment</span>: fixed;<span class="attribute">overflow</span>:hidden;&#125;</span><br><span class="line"><span class="selector-class">.startpage</span>&#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">667px</span>;<span class="attribute">z-index</span>: <span class="number">999</span>;<span class="attribute">top</span>: <span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-class">.startbtn</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;<span class="attribute">height</span>: <span class="number">120px</span>;<span class="attribute">background-image</span>:  <span class="built_in">url</span>(<span class="string">'img/startgame.gif'</span>);</span><br><span class="line">	<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;<span class="attribute">position</span>: absolute;<span class="attribute">top</span>: <span class="number">0</span>;<span class="attribute">right</span>: <span class="number">0</span>;<span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">0</span>;<span class="attribute">margin</span>: auto;<span class="attribute">cursor</span>: hand;&#125;</span><br><span class="line"><span class="selector-class">.wrapper</span>&#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">666px</span>;<span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">	<span class="attribute">position</span>: relative;&#125;</span><br><span class="line"><span class="selector-class">.left-side</span>&#123;<span class="attribute">width</span>: <span class="number">5.8%</span>;<span class="attribute">height</span>: <span class="number">100%</span>;<span class="attribute">position</span>: relative;<span class="attribute">float</span>: left;&#125;</span><br><span class="line"><span class="selector-class">.left-side</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">	<span class="attribute">cursor</span>: pointer;<span class="attribute">width</span>: <span class="number">60px</span>;<span class="attribute">height</span>: <span class="number">60px</span>;<span class="attribute">margin-left</span>: <span class="number">15px</span>;</span><br><span class="line">	<span class="attribute">margin-top</span>: <span class="number">15px</span>;<span class="attribute">border-radius</span>: <span class="number">50%</span>;<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-class">.left-side</span> <span class="selector-class">.img1</span>&#123;<span class="attribute">display</span>: none;&#125;</span><br><span class="line"><span class="selector-class">.left-side</span> <span class="selector-class">.img2</span>&#123;<span class="attribute">display</span>: none;&#125;</span><br><span class="line"><span class="selector-class">.main</span>&#123;<span class="attribute">position</span>: relative;<span class="attribute">float</span>: left;<span class="attribute">width</span>: <span class="number">87.8%</span>;<span class="attribute">height</span>: <span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-class">.score</span>&#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">9%</span>;<span class="attribute">text-align</span>: center;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">25px</span>;<span class="attribute">font-weight</span>: bolder;<span class="attribute">top</span>: <span class="number">10px</span>;<span class="attribute">color</span>: <span class="number">#f9f</span>;&#125;</span><br><span class="line"><span class="selector-class">.content</span>&#123;<span class="attribute">position</span>: absolute;<span class="attribute">z-index</span>: <span class="number">99</span>;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">79%</span>;&#125;</span><br><span class="line"><span class="selector-class">.bottom</span>&#123;<span class="attribute">position</span>: relative;<span class="attribute">bottom</span>: <span class="number">0px</span>;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">12%</span>;&#125;</span><br><span class="line"><span class="selector-class">.loser</span>&#123;</span><br><span class="line">	<span class="attribute">display</span>: none;<span class="attribute">width</span>: <span class="number">100%</span>;<span class="attribute">height</span>: <span class="number">100%</span>;<span class="attribute">top</span>: <span class="number">0</span>;<span class="attribute">left</span>: <span class="number">0</span>;<span class="attribute">z-index</span>: <span class="number">9999</span>;&#125;</span><br><span class="line"><span class="selector-class">.con</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">30%</span>;<span class="attribute">height</span>: <span class="number">60%</span>;<span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'img/fail01.jpg'</span>);<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">0</span>;<span class="attribute">right</span>: <span class="number">0</span>;<span class="attribute">bottom</span>: <span class="number">0</span>;<span class="attribute">left</span>: <span class="number">0</span>;<span class="attribute">margin</span>:auto;&#125;</span><br><span class="line"><span class="selector-class">.error</span>&#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;<span class="attribute">width</span>: <span class="number">40px</span>;<span class="attribute">height</span>:<span class="number">40px</span>;</span><br><span class="line">	<span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'img/error01.jpg'</span>);<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">0</span>;<span class="attribute">right</span>: <span class="number">0</span>;<span class="attribute">cursor</span>: pointer;<span class="attribute">z-index</span>: <span class="number">99999</span>;&#125;</span><br><span class="line"><span class="selector-class">.loserscore</span>&#123;</span><br><span class="line">	<span class="attribute">display</span>: block;<span class="attribute">width</span>: <span class="number">30px</span>;<span class="attribute">height</span>: <span class="number">40px</span>;<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">35%</span>;<span class="attribute">left</span>: <span class="number">27%</span>;<span class="attribute">font-size</span>: <span class="number">25px</span>;<span class="attribute">font-weight</span>: bolder;&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.food</span>&#123;<span class="attribute">background-image</span>: <span class="built_in">url</span>(img/apple.jpg);<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>; &#125;</span><br><span class="line"><span class="selector-class">.head</span>&#123;<span class="attribute">background-image</span>: <span class="built_in">url</span>(img/head03.jpg);<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;&#125;</span><br><span class="line"><span class="selector-class">.body</span>&#123;<span class="attribute">background-image</span>: <span class="built_in">url</span>(img/body011.jpg);<span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-js代码交互"><a href="#4-js代码交互" class="headerlink" title="4. js代码交互"></a>4. js代码交互</h3><p>重点内容就在这里了，代码有些长，做好准备呀</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取元素的Id</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getId</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取元素的名</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTagName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementsByTagName(name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置样式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params">obj, attr, value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> getComputedStyle(obj, attr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span> == <span class="number">3</span>) &#123;</span><br><span class="line">        obj.style[attr] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="首先，定义变量"><a href="#首先，定义变量" class="headerlink" title="首先，定义变量"></a>首先，定义变量</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> content = getId(<span class="string">"content"</span>);</span><br><span class="line"><span class="keyword">var</span> startPage = getId(<span class="string">"startpage"</span>);</span><br><span class="line"><span class="keyword">var</span> startbtn = getId(<span class="string">"startbtn"</span>);</span><br><span class="line"><span class="keyword">var</span> leftSide = getId(<span class="string">"left-side"</span>);</span><br><span class="line"><span class="keyword">var</span> leftimg0 = leftSide.children[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> leftimg1 = leftSide.children[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> scoreBox = getId(<span class="string">"score"</span>);</span><br><span class="line"><span class="keyword">var</span> loser=getId(<span class="string">"loser"</span>);</span><br><span class="line"><span class="keyword">var</span> loserscore=getId(<span class="string">"loserscore"</span>);</span><br><span class="line"><span class="keyword">var</span> error=getId(<span class="string">"error"</span>);</span><br><span class="line"><span class="keyword">var</span> snakeMove;</span><br><span class="line"><span class="keyword">var</span> speed = <span class="number">300</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="初始化食物和小蛇"><a href="#初始化食物和小蛇" class="headerlink" title="初始化食物和小蛇"></a>初始化食物和小蛇</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//地图</span></span><br><span class="line">    <span class="keyword">this</span>.mapW = <span class="built_in">parseInt</span>(getComputedStyle(content, <span class="literal">false</span>)[<span class="string">"width"</span>]);</span><br><span class="line">    <span class="keyword">this</span>.mapH = <span class="built_in">parseInt</span>(getComputedStyle(content, <span class="literal">false</span>)[<span class="string">"height"</span>]);</span><br><span class="line">    <span class="comment">// console.log(mapW,mapH);</span></span><br><span class="line">    <span class="keyword">this</span>.mapDiv = content;</span><br><span class="line">    <span class="comment">//食物</span></span><br><span class="line">    <span class="keyword">this</span>.foodW = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">this</span>.foodH = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">this</span>.foodX = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.foodY = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 蛇    把蛇看成一个数组</span></span><br><span class="line">    <span class="keyword">this</span>.snakeW = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">this</span>.snakeH = <span class="number">20</span>;</span><br><span class="line">    <span class="comment">//x,y,主体</span></span><br><span class="line">    <span class="keyword">this</span>.snakeBody = [[<span class="number">3</span>, <span class="number">2</span>, <span class="string">"head"</span>], [<span class="number">2</span>, <span class="number">2</span>, <span class="string">"body"</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="string">"body"</span>]];</span><br><span class="line">    <span class="comment">//游戏属性</span></span><br><span class="line">    <span class="keyword">this</span>.direct = <span class="string">"right"</span>;</span><br><span class="line">    <span class="keyword">this</span>.left = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.right = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.top = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.bottom = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.score = <span class="number">0</span>;</span><br><span class="line">    startGame();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="生成食物"><a href="#生成食物" class="headerlink" title="生成食物"></a>生成食物</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">food</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> food = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">    food.style.width = <span class="keyword">this</span>.foodW + <span class="string">"px"</span>;</span><br><span class="line">    food.style.height = <span class="keyword">this</span>.foodH + <span class="string">"px"</span>;</span><br><span class="line">    food.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">    <span class="keyword">this</span>.foodX = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (<span class="keyword">this</span>.mapW / <span class="number">20</span>));</span><br><span class="line">    <span class="keyword">this</span>.foodY = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (<span class="keyword">this</span>.mapH / <span class="number">20</span>));</span><br><span class="line">    food.style.left = <span class="keyword">this</span>.foodX * <span class="number">20</span> + <span class="string">"px"</span>;</span><br><span class="line">    food.style.top = <span class="keyword">this</span>.foodY * <span class="number">20</span> + <span class="string">"px"</span>;</span><br><span class="line">    <span class="keyword">this</span>.mapDiv.appendChild(food).setAttribute(<span class="string">"class"</span>, <span class="string">"food"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="生成小蛇"><a href="#生成小蛇" class="headerlink" title="生成小蛇"></a>生成小蛇</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">snack</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.snakeBody.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> snake = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">        snake.style.width = <span class="keyword">this</span>.snakeW + <span class="string">"px"</span>;</span><br><span class="line">        snake.style.height = <span class="keyword">this</span>.snakeH + <span class="string">"px"</span>;</span><br><span class="line">        snake.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">        snake.style.left = <span class="keyword">this</span>.snakeBody[i][<span class="number">0</span>] * <span class="number">20</span> + <span class="string">"px"</span>;</span><br><span class="line">        snake.style.top = <span class="keyword">this</span>.snakeBody[i][<span class="number">1</span>] * <span class="number">20</span> + <span class="string">"px"</span>;</span><br><span class="line">        snake.classList.add(<span class="keyword">this</span>.snakeBody[i][<span class="number">2</span>]);</span><br><span class="line">        <span class="keyword">this</span>.mapDiv.appendChild(snake).classList.add(<span class="string">"snake"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="小蛇移动"><a href="#小蛇移动" class="headerlink" title="小蛇移动"></a>小蛇移动</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="keyword">this</span>.snakeBody.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">this</span>.snakeBody[i][<span class="number">0</span>] = <span class="keyword">this</span>.snakeBody[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.snakeBody[i][<span class="number">1</span>] = <span class="keyword">this</span>.snakeBody[i - <span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">this</span>.direct) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"right"</span>:</span><br><span class="line">            <span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">0</span>] += <span class="number">1</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"left"</span>:</span><br><span class="line">            <span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">0</span>] -= <span class="number">1</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"top"</span>:</span><br><span class="line">            <span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">1</span>] -= <span class="number">1</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"bottom"</span>:</span><br><span class="line">            <span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">1</span>] += <span class="number">1</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    removeClass(<span class="string">"snake"</span>);</span><br><span class="line">    snack();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">0</span>] ==<span class="keyword">this</span>.foodX  &amp;&amp; <span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">1</span>] == <span class="keyword">this</span>.foodY)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">var</span> snakeEndX = <span class="keyword">this</span>.snakeBody[<span class="keyword">this</span>.snakeBody.length - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> snakeEndY = <span class="keyword">this</span>.snakeBody[<span class="keyword">this</span>.snakeBody.length - <span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">switch</span> (<span class="keyword">this</span>.direct) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"right"</span>:</span><br><span class="line">                <span class="keyword">this</span>.snakeBody.push([snakeEndX + <span class="number">1</span>, snakeEndY, <span class="string">"body"</span>]);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"left"</span>:</span><br><span class="line">                <span class="keyword">this</span>.snakeBody.push([snakeEndX - <span class="number">1</span>, snakeEndY, <span class="string">"body"</span>]);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"top"</span>:</span><br><span class="line">                <span class="keyword">this</span>.snakeBody.push([snakeEndX, snakeEndY - <span class="number">1</span>, <span class="string">"body"</span>]);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"bottom"</span>:</span><br><span class="line">                <span class="keyword">this</span>.snakeBody.push([snakeEndX, snakeEndY + <span class="number">1</span>, <span class="string">"body"</span>]);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.score += <span class="number">1</span>;</span><br><span class="line">        scoreBox.innerHTML = <span class="keyword">this</span>.score;</span><br><span class="line">        removeClass(<span class="string">"food"</span>);</span><br><span class="line">        food();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">0</span>]&lt;<span class="number">0</span>||<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">0</span>]&gt;<span class="keyword">this</span>.mapW/<span class="number">20</span>)&#123;</span><br><span class="line">        reloadGame();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">1</span>]&lt;<span class="number">0</span>||<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">1</span>]&gt;<span class="keyword">this</span>.mapH/<span class="number">20</span>)&#123;</span><br><span class="line">        reloadGame();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> snakeHX=<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> snaleHY=<span class="keyword">this</span>.snakeBody[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="keyword">this</span>.snakeBody.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(snakeHX==snakeBody[i][<span class="number">0</span>]&amp;&amp;snaleHY==snakeBody[i][<span class="number">1</span>])&#123;</span><br><span class="line">            reloadGame();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="小蛇移动的方向"><a href="#小蛇移动的方向" class="headerlink" title="小蛇移动的方向"></a>小蛇移动的方向</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setDirect</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (code) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">37</span>:</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.left) &#123;</span><br><span class="line">                <span class="keyword">this</span>.direct = <span class="string">"left"</span>;</span><br><span class="line">                <span class="keyword">this</span>.left = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">this</span>.right = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">this</span>.top = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">this</span>.bottom = <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">39</span>:</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.right) &#123;</span><br><span class="line">                <span class="keyword">this</span>.direct = <span class="string">"right"</span>;</span><br><span class="line">                <span class="keyword">this</span>.left = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">this</span>.right = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">this</span>.top = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">this</span>.bottom = <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">38</span>:</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.top) &#123;</span><br><span class="line">                <span class="keyword">this</span>.direct = <span class="string">"top"</span>;</span><br><span class="line">                <span class="keyword">this</span>.left = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">this</span>.right = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">this</span>.top = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">this</span>.bottom = <span class="literal">false</span>;</span><br><span class="line">            &#125; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">40</span>:</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.bottom) &#123;</span><br><span class="line">                <span class="keyword">this</span>.direct = <span class="string">"bottom"</span>;</span><br><span class="line">                <span class="keyword">this</span>.left = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">this</span>.right = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">this</span>.top = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">this</span>.bottom = <span class="literal">false</span>;</span><br><span class="line">            &#125; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="游戏失败重新初始化小蛇和食物"><a href="#游戏失败重新初始化小蛇和食物" class="headerlink" title="游戏失败重新初始化小蛇和食物"></a>游戏失败重新初始化小蛇和食物</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reloadGame</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    removeClass(<span class="string">"snake"</span>);</span><br><span class="line">    removeClass(<span class="string">"food"</span>);</span><br><span class="line">    clearInterval(snakeMove);</span><br><span class="line">    <span class="keyword">this</span>.snakeBody = [[<span class="number">3</span>, <span class="number">2</span>, <span class="string">"head"</span>], [<span class="number">2</span>, <span class="number">2</span>, <span class="string">"body"</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="string">"body"</span>]];</span><br><span class="line">    <span class="comment">//游戏属性</span></span><br><span class="line">    <span class="keyword">this</span>.direct = <span class="string">"right"</span>;</span><br><span class="line">    <span class="keyword">this</span>.left = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.right = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.top = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.bottom = <span class="literal">true</span>;</span><br><span class="line">    loser.style.display=<span class="string">"block"</span>;</span><br><span class="line">    loserscore.innerHTML=<span class="keyword">this</span>.score;</span><br><span class="line">    <span class="keyword">this</span>.score=<span class="number">0</span>;</span><br><span class="line">    scoreBox.innerHTML=<span class="keyword">this</span>.score;</span><br><span class="line">    leftimg0.style.display=<span class="string">"block"</span>;</span><br><span class="line">    leftimg1.style.display=<span class="string">"none"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>小蛇移动事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bindEvent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> code = e.keyCode;</span><br><span class="line">        setDirect(code);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> istrue=<span class="literal">false</span>;</span><br><span class="line">    error.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        loser.style.display=<span class="string">"none"</span>;</span><br><span class="line">        food();</span><br><span class="line">        snack();</span><br><span class="line">    &#125;</span><br><span class="line">    leftSide.onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(istrue==<span class="literal">true</span>)&#123;</span><br><span class="line">            leftimg0.style.display=<span class="string">"none"</span>;</span><br><span class="line">            leftimg1.style.display=<span class="string">"block"</span>;</span><br><span class="line">            snakeMove = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                move();</span><br><span class="line">            &#125;, speed)</span><br><span class="line">            istrue=<span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            leftimg0.style.display=<span class="string">"block"</span>;</span><br><span class="line">            leftimg1.style.display=<span class="string">"none"</span>;</span><br><span class="line">            clearInterval(snakeMove);</span><br><span class="line">            istrue=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="去掉css样式"><a href="#去掉css样式" class="headerlink" title="去掉css样式"></a>去掉css样式</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeClass</span>(<span class="params">className</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementsByClassName(className);</span><br><span class="line">    <span class="keyword">while</span> (ele.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        ele[<span class="number">0</span>].parentNode.removeChild(ele[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="开始游戏"><a href="#开始游戏" class="headerlink" title="开始游戏"></a>开始游戏</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startGame</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    food();</span><br><span class="line">    snack();</span><br><span class="line">    snakeMove = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        move();</span><br><span class="line">    &#125;, speed)</span><br><span class="line">    bindEvent();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="开始的页面有一个开始游戏按钮，点击页面初始化并开始游戏"><a href="#开始的页面有一个开始游戏按钮，点击页面初始化并开始游戏" class="headerlink" title="开始的页面有一个开始游戏按钮，点击页面初始化并开始游戏"></a>开始的页面有一个开始游戏按钮，点击页面初始化并开始游戏</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">startbtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    startPage.style.display = <span class="string">"none"</span>;</span><br><span class="line">    leftimg0.style.display = <span class="string">"none"</span>;</span><br><span class="line">    leftimg1.style.display = <span class="string">"block"</span>;</span><br><span class="line">    init(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了，大致就是这样了，用的时候要注意函数顺序</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hhhh.github.io/2019/02/06/跨域问题的解决/" rel="next" title="跨域问题的解决方案  --随写笔记">
+                <i class="fa fa-chevron-left"></i> 跨域问题的解决方案  --随写笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">April Han</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/hhhh.github.io/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪吃蛇"><span class="nav-number">1.</span> <span class="nav-text">贪吃蛇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-准备阶段"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.  准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-页面大体布局"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 页面大体布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-页面样式"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 页面样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-js代码交互"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. js代码交互</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先，定义变量"><span class="nav-number">1.0.4.0.1.</span> <span class="nav-text">首先，定义变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#初始化食物和小蛇"><span class="nav-number">1.0.4.0.2.</span> <span class="nav-text">初始化食物和小蛇</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成食物"><span class="nav-number">1.0.4.0.3.</span> <span class="nav-text">生成食物</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成小蛇"><span class="nav-number">1.0.4.0.4.</span> <span class="nav-text">生成小蛇</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小蛇移动"><span class="nav-number">1.0.4.0.5.</span> <span class="nav-text">小蛇移动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小蛇移动的方向"><span class="nav-number">1.0.4.0.6.</span> <span class="nav-text">小蛇移动的方向</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#游戏失败重新初始化小蛇和食物"><span class="nav-number">1.0.4.0.7.</span> <span class="nav-text">游戏失败重新初始化小蛇和食物</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#去掉css样式"><span class="nav-number">1.0.4.0.8.</span> <span class="nav-text">去掉css样式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开始游戏"><span class="nav-number">1.0.4.0.9.</span> <span class="nav-text">开始游戏</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开始的页面有一个开始游戏按钮，点击页面初始化并开始游戏"><span class="nav-number">1.0.4.0.10.</span> <span class="nav-text">开始的页面有一个开始游戏按钮，点击页面初始化并开始游戏</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">April Han</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hhhh.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hhhh.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
