@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="SPA/SEO/SSRSPA:单页面应用SPA 时代，主要是在客户端端使用了`history`或`hash`（主要是为了低版本浏览器的兼容）API，在首次请求经服务端路由输出整个应用程序后，接下来的路由都由前端掌控了，前端通过路由作为中心枢纽控制一系列页面（组件）的渲染(DOM的生成)加载和数据交互。  优点  页面之间的切换非常快 一定程度减少了后端服务器的压力 后端程序只需要提供api，不需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何用hexo和git搭建个人博客">
-<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2018/04/17/如何用hexo和git搭建个人博客/index.html">
+<meta property="og:title" content="SPA&#x2F;SEO&#x2F;SSR">
+<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2019/02/27/SPA-SEO-SSR/index.html">
 <meta property="og:site_name" content="韩韩韩韩小静静">
+<meta property="og:description" content="SPA/SEO/SSRSPA:单页面应用SPA 时代，主要是在客户端端使用了`history`或`hash`（主要是为了低版本浏览器的兼容）API，在首次请求经服务端路由输出整个应用程序后，接下来的路由都由前端掌控了，前端通过路由作为中心枢纽控制一系列页面（组件）的渲染(DOM的生成)加载和数据交互。  优点  页面之间的切换非常快 一定程度减少了后端服务器的压力 后端程序只需要提供api，不需要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T12:36:01.548Z">
+<meta property="og:updated_time" content="2019-03-04T12:49:32.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何用hexo和git搭建个人博客">
+<meta name="twitter:title" content="SPA&#x2F;SEO&#x2F;SSR">
+<meta name="twitter:description" content="SPA/SEO/SSRSPA:单页面应用SPA 时代，主要是在客户端端使用了`history`或`hash`（主要是为了低版本浏览器的兼容）API，在首次请求经服务端路由输出整个应用程序后，接下来的路由都由前端掌控了，前端通过路由作为中心枢纽控制一系列页面（组件）的渲染(DOM的生成)加载和数据交互。  优点  页面之间的切换非常快 一定程度减少了后端服务器的压力 后端程序只需要提供api，不需要">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2018/04/17/如何用hexo和git搭建个人博客/">
+  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2019/02/27/SPA-SEO-SSR/">
 
 
 
 
 
-  <title>如何用hexo和git搭建个人博客 | 韩韩韩韩小静静</title>
+  <title>SPA/SEO/SSR | 韩韩韩韩小静静</title>
   
 
 
@@ -229,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2018/04/17/如何用hexo和git搭建个人博客/">
+    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2019/02/27/SPA-SEO-SSR/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="April Han">
@@ -246,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何用hexo和git搭建个人博客</h1>
+          <h1 class="post-title" itemprop="name headline">SPA/SEO/SSR</h1>
         
 
         <div class="post-meta">
@@ -258,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T20:03:22+08:00">
-                2018-04-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T23:35:34+08:00">
+                2019-02-27
               </time>
             
 
@@ -296,7 +299,52 @@
       
 
       
-        
+        <h2 id="SPA-SEO-SSR"><a href="#SPA-SEO-SSR" class="headerlink" title="SPA/SEO/SSR"></a>SPA/SEO/SSR</h2><h4 id="SPA-单页面应用"><a href="#SPA-单页面应用" class="headerlink" title="SPA:单页面应用"></a>SPA:单页面应用</h4><pre><code>SPA 时代，主要是在客户端端使用了`history`或`hash`（主要是为了低版本浏览器的兼容）API，在首次请求经服务端路由输出整个应用程序后，接下来的路由都由前端掌控了，前端通过路由作为中心枢纽控制一系列页面（组件）的渲染(DOM的生成)加载和数据交互。
+</code></pre><blockquote>
+<p>优点</p>
+</blockquote>
+<pre><code>页面之间的切换非常快
+一定程度减少了后端服务器的压力
+后端程序只需要提供api，不需要客户端到底是web端还是手机等
+</code></pre><a id="more"></a>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<pre><code>首屏打开速度很慢，因为用户首次加载需要先下载SPA框架及应用程序的代码，然后在客户端渲染页面。
+不利于SEO搜索引擎优化
+</code></pre><h4 id="SEO-搜索引擎优化"><a href="#SEO-搜索引擎优化" class="headerlink" title="SEO:搜索引擎优化"></a>SEO:搜索引擎优化</h4><pre><code>SEO是一种通过了解搜索引擎的运作规则（如何抓取网站页面，如何索引以及如何根据特定的关键字展现搜索结果排序等）来调整网站，以提高该网站在搜索引擎中某些关键词的搜索结果排名。
+
+我们之前说SPA单页面应用，通过AJAX获取数据，这就难保证我们的页面能被搜索引擎正常收到，并且有一些搜索引擎不支持执行js和通过ajax获取数据，那就更不用提SEO了。为了解决这个问题，SSR登场了
+</code></pre><h4 id="SSR-服务器端渲染"><a href="#SSR-服务器端渲染" class="headerlink" title="SSR:服务器端渲染"></a>SSR:服务器端渲染</h4><pre><code>为了解决SPA不支持SEO的问题，我们也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送到浏览器，但是这样的HTML页面还不具备交互能力，所以还需要与SPA框架配合，在浏览器上“混合”成可交互的应用程序。
+
+基本流程是：
+</code></pre><blockquote>
+<p>在浏览器第一次访问某个 URI 资源的时候（首屏），Web 服务器根据路由拿到对应数据渲染并输出，且输出的数据中包含两部分：</p>
+<ul>
+<li>路由页对应的页面及已渲染好的数据</li>
+<li>完整的SPA程序代码</li>
+</ul>
+</blockquote>
+<pre><code>在客户端首屏渲染完成之后，此时我们看到的其实已经是一个和之前的 SPA 相差无几的应用程序了，接下来我们进行的任何操作都只是客户端的应用进行交互，页面/组件由Web端渲染，路由也由浏览器控制，用户只需要和当前浏览器内的应用打交道就可以了。
+</code></pre><blockquote>
+<p>SSR优点</p>
+</blockquote>
+<pre><code>更好的 SEO，由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面。
+更快的内容到达时间(time-to-content)，不用等待所有的JS都下载完成，浏览器便能显示比较完整的页面了
+</code></pre><blockquote>
+<p>SSR缺点</p>
+</blockquote>
+<pre><code>占用更多的cpu和内存资源
+一些常用的浏览器的api可能无法正常使用，比如window，document，alert等，如果使用的话需要对运行环境加以判断
+开发调试会有一些麻烦，因为涉及到了浏览器及服务器，对于SPA的一些组件的声明周期的管理会变得复杂
+</code></pre><h2 id="Nuxt"><a href="#Nuxt" class="headerlink" title="Nuxt"></a>Nuxt</h2><p>​    Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染(SSR)的 Vue 应用提供了极其便利的开发体验。</p>
+<p>​    Vue.js是开发SPA单页面应用的，传统的SPA应用是将bundle.js从服务端获取，然后在客户端解析并挂载到dom。</p>
+<h4 id="Nuxt对SSR支持"><a href="#Nuxt对SSR支持" class="headerlink" title="Nuxt对SSR支持"></a>Nuxt对SSR支持</h4><pre><code>    从头搭建一个服务端渲染的应用是相当复杂的。幸运的是，我们有一个优秀的社区项目 [Nuxt.js](https://nuxtjs.org/) 让这一切变得非常简单。Nuxt 是一个基于 Vue 生态的更高层的框架，为开发服务端渲染的 Vue 应用提供了极其便利的开发体验。
+
+Nuxt.js 是使用 Webpack 和 Node.js 进行封装的基于Vue的SSR框架，预设了利用Vue.js开发**服务端渲染**的应用所需要的各种配置，使用它你可以不需要自己搭建一套 SSR 程序，而是通过其约定好的文件结构和API就可以实现一个首屏渲染的 Web 应用。
+</code></pre><p>​    Nuxt.js 主要关注的是应用的 UI渲染。</p>
+<h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><p>​    我不是很了解react的服务端渲染框架，所以就找了篇文章读，emmmmm，贴上。。。<a href="https://www.jianshu.com/p/b8ce21b6fd71" target="_blank" rel="noopener">https://www.jianshu.com/p/b8ce21b6fd71</a></p>
+
       
     </div>
     
@@ -320,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hhhh.github.io/2018/03/12/原生javascript之-贪吃蛇/" rel="next" title="原生javascript之 ---- 贪吃蛇">
-                <i class="fa fa-chevron-left"></i> 原生javascript之 ---- 贪吃蛇
+              <a href="/hhhh.github.io/2019/02/06/跨域问题的解决/" rel="next" title="跨域问题的解决方案  --随写笔记">
+                <i class="fa fa-chevron-left"></i> 跨域问题的解决方案  --随写笔记
               </a>
             
           </div>
@@ -329,10 +377,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/hhhh.github.io/2018/04/25/js数据类型和类型检测/" rel="prev" title="JavaScript数据类型和类型检测">
-                JavaScript数据类型和类型检测 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -384,8 +428,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -436,6 +489,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPA-SEO-SSR"><span class="nav-number">1.</span> <span class="nav-text">SPA/SEO/SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SPA-单页面应用"><span class="nav-number">1.0.1.</span> <span class="nav-text">SPA:单页面应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SEO-搜索引擎优化"><span class="nav-number">1.0.2.</span> <span class="nav-text">SEO:搜索引擎优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSR-服务器端渲染"><span class="nav-number">1.0.3.</span> <span class="nav-text">SSR:服务器端渲染</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Nuxt"><span class="nav-number">2.</span> <span class="nav-text">Nuxt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nuxt对SSR支持"><span class="nav-number">2.0.1.</span> <span class="nav-text">Nuxt对SSR支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next"><span class="nav-number">3.</span> <span class="nav-text">Next</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
