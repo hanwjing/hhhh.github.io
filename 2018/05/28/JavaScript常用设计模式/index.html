@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hhhh.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/hhhh.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/hhhh.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hhhh.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hhhh.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hhhh.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/hhhh.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JavaScript常用设计模式详解JavaScript中常用的设计模式有十种，分别为工厂模式，单体模式，模块模式，代理模式，职责链模式，命令模式，模板方法模式，策略模式，发布-订阅模式以及中介者模式。 都是为了降低代码的耦合度，提高性能。">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript常用设计模式">
+<meta property="og:url" content="https://hanwjing.github.io/hhhh.github.io/2018/05/28/JavaScript常用设计模式/index.html">
+<meta property="og:site_name" content="韩韩韩韩小静静">
+<meta property="og:description" content="JavaScript常用设计模式详解JavaScript中常用的设计模式有十种，分别为工厂模式，单体模式，模块模式，代理模式，职责链模式，命令模式，模板方法模式，策略模式，发布-订阅模式以及中介者模式。 都是为了降低代码的耦合度，提高性能。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-04T12:22:50.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript常用设计模式">
+<meta name="twitter:description" content="JavaScript常用设计模式详解JavaScript中常用的设计模式有十种，分别为工厂模式，单体模式，模块模式，代理模式，职责链模式，命令模式，模板方法模式，策略模式，发布-订阅模式以及中介者模式。 都是为了降低代码的耦合度，提高性能。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hhhh.github.io/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hanwjing.github.io/hhhh.github.io/2018/05/28/JavaScript常用设计模式/">
+
+
+
+
+
+  <title>JavaScript常用设计模式 | 韩韩韩韩小静静</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hhhh.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">韩韩韩韩小静静</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hhhh.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hhhh.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hanwjing.github.io/hhhh.github.io/hhhh.github.io/2018/05/28/JavaScript常用设计模式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="April Han">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hhhh.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="韩韩韩韩小静静">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript常用设计模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-28T20:21:07+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JavaScript常用设计模式详解"><a href="#JavaScript常用设计模式详解" class="headerlink" title="JavaScript常用设计模式详解"></a>JavaScript常用设计模式详解</h1><p>JavaScript中常用的设计模式有十种，分别为工厂模式，单体模式，模块模式，代理模式，职责链模式，命令模式，模板方法模式，策略模式，发布-订阅模式以及中介者模式。</p>
+<p>都是为了降低代码的耦合度，提高性能。<br><a id="more"></a></p>
+<p>其中，工厂模式，单例模式，模块模式，发布订阅模式比较重要，常用。</p>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><p>简单工厂模式就是用来解决多个类似对象的声明问题，无法判断所创建出的对象的类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//创建对象</span><br><span class="line">function CreatePerson(name,age,sex) &#123;   </span><br><span class="line">    var obj = new Object();  //new了一个object对象</span><br><span class="line">    obj.name = name;</span><br><span class="line">    obj.age = age;</span><br><span class="line">    obj.sex = sex;</span><br><span class="line">    obj.sayName = function()&#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//可以无数次调用这个函数，来获得包含三个属性一个方法的对象</span><br><span class="line">var p1 = new CreatePerson(&quot;longen&quot;,&apos;28&apos;,&apos;男&apos;);</span><br><span class="line">var p2 = new CreatePerson(&quot;tugenhua&quot;,&apos;27&apos;,&apos;女&apos;);</span><br><span class="line">console.log(p1.name); // longen</span><br><span class="line">console.log(p1.age);  // 28</span><br><span class="line">console.log(p1.sex);  // 男</span><br><span class="line">console.log(p1.sayName()); // longen</span><br><span class="line"></span><br><span class="line">console.log(p2.name);  // tugenhua</span><br><span class="line">console.log(p2.age);   // 27</span><br><span class="line">console.log(p2.sex);   // 女</span><br><span class="line">console.log(p2.sayName()); // tugenhua</span><br><span class="line"></span><br><span class="line">// 返回都是object 无法识别对象的类型 不知道他们是哪个对象的实例(不知道对象的类型)</span><br><span class="line">console.log(typeof p1);  // object</span><br><span class="line">console.log(typeof p2);  // object</span><br><span class="line">console.log(p1 instanceof Object); // true</span><br></pre></td></tr></table></figure>
+<p>拓展：</p>
+<p>除了string、number、Boolean、null、undefined之外，其他的数据都是对象。</p>
+<p>对象的类型：1.内置对象（原生对象）=&gt;RegExp，Date，Math…(js语言本身预定义的对象)</p>
+<pre><code>2.宿主对象=&gt;BOM对象：History，Location，Window，Navigate，Screen
+
+                       DOM对象：Body，Style，Meta，Frame，Frameset...
+</code></pre><h3 id="复杂工厂模式"><a href="#复杂工厂模式" class="headerlink" title="复杂工厂模式"></a>复杂工厂模式</h3><p>将其对象成员的实例化推迟到子类当中，子类可以重写接口（overRide）来创建自己的对象类型。</p>
+<p>父类只对创建过程中的一般性问题进行处理，这些处理会被子类继承，子类之间是相互独立的，具体的业务逻辑会放在子类中进行编写。父类中只声明方法而具体的业务逻辑要在子类中写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">// 定义自行车的构造函数 父类=&gt;抽象类</span><br><span class="line">var BicycleShop = function(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.method = function()&#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">BicycleShop.prototype = &#123;</span><br><span class="line">    constructor: BicycleShop, </span><br><span class="line">    sellBicycle: function(model)&#123;</span><br><span class="line">            var bicycle = this.createBicycle(model);</span><br><span class="line">            // 执行A业务逻辑</span><br><span class="line">            bicycle.A();</span><br><span class="line"></span><br><span class="line">            // 执行B业务逻辑</span><br><span class="line">            bicycle.B();</span><br><span class="line"></span><br><span class="line">            return bicycle;</span><br><span class="line">        &#125;,</span><br><span class="line">        createBicycle: function(model)&#123;</span><br><span class="line">            throw new Error(&quot;父类是抽象类不能直接调用，需要子类重写该方法&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    //子类</span><br><span class="line">    var BicycleChild = function(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    // 继承构造函数父类中的属性和方法</span><br><span class="line">        BicycleShop.call(this,name);</span><br><span class="line">    &#125;;</span><br><span class="line">    // 子类继承父类原型方法</span><br><span class="line">    extend(BicycleChild,BicycleShop);</span><br><span class="line">    // BicycleChild 子类重写父类的方法</span><br><span class="line">    BicycleChild.prototype.createBicycle = function()&#123;</span><br><span class="line">    var A = function()&#123;</span><br><span class="line">        console.log(&quot;执行A业务操作&quot;);    </span><br><span class="line">    &#125;;</span><br><span class="line">    var B = function()&#123;</span><br><span class="line">        console.log(&quot;执行B业务操作&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    return &#123;</span><br><span class="line">        A: A,</span><br><span class="line">        B: B</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var childClass = new BicycleChild(&quot;捷安特&quot;);</span><br><span class="line">console.log(childClass);</span><br><span class="line">console.log(childClass.name);</span><br><span class="line">childClass.sellBicycle(&quot;model&quot;);</span><br></pre></td></tr></table></figure>
+<p>extend子类继承父类原型方法函数的封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function extend(Sub,Sup) &#123;</span><br><span class="line">       //Sub表示子类，Sup表示超类</span><br><span class="line">       // 首先定义一个空函数</span><br><span class="line">       var F = function()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">       // 设置空函数的原型为超类的原型</span><br><span class="line">       F.prototype = Sup.prototype; </span><br><span class="line"></span><br><span class="line">       // 实例化空函数，并把超类原型引用传递给子类</span><br><span class="line">       Sub.prototype = new F();</span><br><span class="line">                   </span><br><span class="line">       // 重置子类原型的构造器为子类自身</span><br><span class="line">       Sub.prototype.constructor = Sub;</span><br><span class="line">                   </span><br><span class="line">       // 在子类中保存超类的原型,避免子类与超类耦合</span><br><span class="line">       Sub.sup = Sup.prototype;</span><br><span class="line"></span><br><span class="line">       if(Sup.prototype.constructor === Object.prototype.constructor) &#123;</span><br><span class="line">           // 检测超类原型的构造器是否为原型自身</span><br><span class="line">           Sup.prototype.constructor = Sup;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>优点：1.弱化对象间的耦合，防止代码的重复。在一个方法中进行类的实例化，可以消除重复性的代码。</p>
+<pre><code>2.重复性的代码可以放在父类去编写，子类继承于父类的所有成员属性和方法，子类只专注于实现自己的业务逻辑。
+</code></pre><h2 id="单体模式-单例模式"><a href="#单体模式-单例模式" class="headerlink" title="单体模式(单例模式)"></a>单体模式(单例模式)</h2><p>对象以字面量的方式来创建单体模式</p>
+<p>特点：如果可以实例化，只可以实例化一次</p>
+<p>单体模式的基本结构：（使用一个变量来标识该类是否被实例化，如果未被实例化的话，那么我们可以实例化一次，否则的话，直接返回已经被实例化的对象。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 单体模式</span><br><span class="line">var Singleton = function(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;;</span><br><span class="line">Singleton.prototype.getName = function()&#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line">// 获取实例对象</span><br><span class="line">function getInstance(name) &#123;</span><br><span class="line">var instance = null;</span><br><span class="line">    if(!this.instance) &#123;</span><br><span class="line">        this.instance = new Singleton(name);</span><br><span class="line">    &#125;</span><br><span class="line">    return this.instance;</span><br><span class="line">&#125;</span><br><span class="line">// 测试单体模式的实例</span><br><span class="line">var a = getInstance(&quot;aa&quot;);</span><br><span class="line">var b = getInstance(&quot;bb&quot;);</span><br><span class="line"></span><br><span class="line">console.log(a === b); // true</span><br><span class="line"></span><br><span class="line">console.log(a.getName()); // aa 单体模式只能实例化一次</span><br><span class="line">console.log(b.getName()); // aa</span><br></pre></td></tr></table></figure>
+<h3 id="单体模式实现弹窗"><a href="#单体模式实现弹窗" class="headerlink" title="单体模式实现弹窗"></a>单体模式实现弹窗</h3><p>一般情况下编写弹窗： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 实现弹窗</span><br><span class="line">var createWindow = function()&#123;</span><br><span class="line">    var div = document.createElement(&quot;div&quot;);</span><br><span class="line">    div.innerHTML = &quot;我是弹窗内容&quot;;</span><br><span class="line">    div.style.display = &apos;none&apos;;</span><br><span class="line">    document.body.appendChild(&apos;div&apos;);</span><br><span class="line">    return div;</span><br><span class="line">&#125;;</span><br><span class="line">document.getElementById(&quot;Id&quot;).onclick = function()&#123;</span><br><span class="line">    // 点击后先创建一个div元素</span><br><span class="line">    var win = createWindow(); //会频繁地创建div对象，降低性能</span><br><span class="line">    win.style.display = &quot;block&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用单例模式实现弹窗，只实例化一次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 实现单体模式弹窗</span><br><span class="line">var createWindow = (function()&#123;</span><br><span class="line">    var div;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        if(!div) &#123;</span><br><span class="line">            div = document.createElement(&quot;div&quot;);</span><br><span class="line">            div.innerHTML = &quot;我是弹窗内容&quot;;</span><br><span class="line">            div.style.display = &apos;none&apos;;</span><br><span class="line">            document.body.appendChild(div);</span><br><span class="line">        &#125;</span><br><span class="line">        return div;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">document.getElementById(&quot;Id&quot;).onclick = function()&#123;</span><br><span class="line">    // 点击后先创建一个div元素</span><br><span class="line">    var win = createWindow();</span><br><span class="line">    win.style.display = &quot;block&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="封装单体模式函数"><a href="#封装单体模式函数" class="headerlink" title="封装单体模式函数"></a>封装单体模式函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var getInstance = function(fn) &#123;</span><br><span class="line">    var result;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        return result || (result = fn.call(this,arguments)); //调用当前对象的方法</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>测试单体模式函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">var createWindow = function()&#123;</span><br><span class="line">    var div = document.createElement(&quot;div&quot;);</span><br><span class="line">    div.innerHTML = &quot;我是弹窗内容&quot;;</span><br><span class="line">    div.style.display = &apos;none&apos;;</span><br><span class="line">    div.style.border = &apos;1px solid red&apos;;</span><br><span class="line">    div.style.width = &apos;100px&apos;;</span><br><span class="line">    div.style.height = &apos;100px&apos;;</span><br><span class="line">    document.body.appendChild(div);</span><br><span class="line">    return div;</span><br><span class="line">&#125;;</span><br><span class="line">// 创建iframe</span><br><span class="line">var createIframe = function()&#123;</span><br><span class="line">    var iframe = document.createElement(&quot;iframe&quot;);</span><br><span class="line">    iframe.style.width = &apos;500px&apos;;</span><br><span class="line">    iframe.style.height = &apos;300px&apos;;</span><br><span class="line">    document.body.appendChild(iframe);</span><br><span class="line">    return iframe;</span><br><span class="line">&#125;;</span><br><span class="line">// 获取实例的封装代码</span><br><span class="line">var getInstance = function(fn) &#123;</span><br><span class="line">    var result;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        return result || (result = fn.call(this,arguments));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 测试创建div</span><br><span class="line">var createSingleDiv = getInstance(createWindow);</span><br><span class="line">document.getElementById(&quot;btn&quot;).onclick = function()&#123;</span><br><span class="line">    var win = createSingleDiv();</span><br><span class="line">    win.style.display = &quot;block&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">// 测试创建iframe</span><br><span class="line">var createSingleIframe = getInstance(createIframe);</span><br><span class="line">document.getElementById(&quot;btn2&quot;).onclick = function()&#123;</span><br><span class="line">    var win = createSingleIframe();</span><br><span class="line">    win.src = &quot;http://baidu.com&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="模块模式"><a href="#模块模式" class="headerlink" title="模块模式"></a>模块模式</h2><p>为单体模式添加私有变量和私有方法能够减少全局变量的使用。降低了代码的耦合度。沙箱模式</p>
+<p>模块模式使用了一个返回对象的匿名函数。在这个匿名函数内部，先定义了私有变量和函数，供内部函数使用，然后将一个对象字面量作为函数的值返回，返回的对象字面量中只包含可以公开的属性和方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var singleMode = (function()&#123;</span><br><span class="line">    // 创建私有变量</span><br><span class="line">    var privateNum = 112;</span><br><span class="line">    // 创建私有函数</span><br><span class="line">    function privateFunc()&#123;</span><br><span class="line">        // 实现自己的业务逻辑代码</span><br><span class="line">    &#125;</span><br><span class="line">    // 返回一个对象包含公有方法和属性</span><br><span class="line">    return &#123;</span><br><span class="line">        publicMethod1: publicMethod1,</span><br><span class="line">        publicMethod2: publicMethod1</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>模块增强模式</p>
+<p>增强的模块模式的使用场合是：适合那些单列必须是某种类型的实例，同时还必须添加某些属性或方法对其加以增强的情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function CustomType() &#123;</span><br><span class="line">    this.name = &quot;tugenhua&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">CustomType.prototype.getName = function()&#123;</span><br><span class="line">    return this.name;</span><br><span class="line">&#125;</span><br><span class="line">var application = (function()&#123;</span><br><span class="line">    // 定义私有</span><br><span class="line">    var privateA = &quot;aa&quot;;</span><br><span class="line">    // 定义私有函数</span><br><span class="line">    function A()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    // 实例化一个对象后，返回该实例，然后为该实例增加一些公有属性和方法</span><br><span class="line">    var object = new CustomType();</span><br><span class="line"></span><br><span class="line">    // 添加公有属性</span><br><span class="line">    object.A = &quot;aa&quot;;</span><br><span class="line">    // 添加公有方法</span><br><span class="line">    object.B = function()&#123;</span><br><span class="line">        return privateA;</span><br><span class="line">    &#125;</span><br><span class="line">    // 返回该对象</span><br><span class="line">    return object;</span><br><span class="line">&#125;)();</span><br><span class="line">console.log(application.A);// aa</span><br><span class="line">console.log(application.B()); // aa  //调用公有的函数访问私有数据</span><br><span class="line">console.log(application.name); // tugenhua</span><br><span class="line">console.log(application.getName());// tugenhua</span><br></pre></td></tr></table></figure>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p>委托机制，新建一个对象代替本体对象被实例化。</p>
+<p>比如现在京东ceo想送给奶茶妹一个礼物，但是呢假如该ceo不好意思送，或者由于工作忙没有时间送，那么这个时候他就想委托他的经纪人去做这件事，然后可以使用代理模式来编写如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 先申明一个奶茶妹对象</span><br><span class="line">var TeaAndMilkGirl = function(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;;</span><br><span class="line">// 这是京东ceo先生</span><br><span class="line">var Ceo = function(girl) &#123;</span><br><span class="line">    this.girl = girl;</span><br><span class="line">    // 送结婚礼物 给奶茶妹</span><br><span class="line">    this.sendMarriageRing = function(ring) &#123;</span><br><span class="line">        console.log(&quot;Hi &quot; + this.girl.name + &quot;, ceo送你一个礼物：&quot; + ring);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 京东ceo的经纪人是代理，来代替送</span><br><span class="line">var ProxyObj = function(girl)&#123;</span><br><span class="line">    this.girl = girl;</span><br><span class="line">    // 经纪人代理送礼物给奶茶妹</span><br><span class="line">    this.sendGift = function(gift) &#123;</span><br><span class="line">        // 代理模式负责本体对象实例化</span><br><span class="line">        (new Ceo(this.girl)).sendMarriageRing(gift);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 初始化</span><br><span class="line">var proxy = new ProxyObj(new TeaAndMilkGirl(&quot;奶茶妹&quot;));</span><br><span class="line">proxy.sendGift(&quot;结婚戒&quot;); // Hi 奶茶妹, ceo送你一个礼物：结婚戒</span><br></pre></td></tr></table></figure>
+<p>优点：1.代理对象可以代替本体被实例化，并使其可以被远程访问</p>
+<pre><code>2.它还可以把本体实例化推迟到真正需要的时候，对于实例化比较费时的本体对象，或者因为尺寸比较大以至于不用时不适于保存在内存中的本体，我们可以推迟实例化该对象
+</code></pre><h3 id="使用虚拟代理实现图片预加载"><a href="#使用虚拟代理实现图片预加载" class="headerlink" title="使用虚拟代理实现图片预加载"></a>使用虚拟代理实现图片预加载</h3><p>不使用代理模式预加载图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 不使用代理的预加载图片函数如下</span><br><span class="line">var myImage = (function()&#123;</span><br><span class="line">    var imgNode = document.createElement(&quot;img&quot;);</span><br><span class="line">    document.body.appendChild(imgNode);</span><br><span class="line">    var img = new Image();</span><br><span class="line">    img.onload = function()&#123;</span><br><span class="line">        imgNode.src = this.src;</span><br><span class="line">    &#125;;</span><br><span class="line">    return &#123;</span><br><span class="line">        setSrc: function(src) &#123;</span><br><span class="line">            imgNode.src = &quot;http://img.lanrentuku.com/img/allimg/1212/5-121204193Q9-50.gif&quot;;</span><br><span class="line">            img.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">// 调用方式</span><br><span class="line">myImage.setSrc(&quot;https://img.alicdn.com/tps/i4/TB1b_neLXXXXXcoXFXXc8PZ9XXX-130-200.png&quot;);</span><br></pre></td></tr></table></figure>
+<p>使用代理模式预加载图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//创建图片</span><br><span class="line">var myImage = (function()&#123;</span><br><span class="line">    var imgNode = document.createElement(&quot;img&quot;);</span><br><span class="line">    document.body.appendChild(imgNode);</span><br><span class="line">    return &#123;</span><br><span class="line">        setSrc: function(src) &#123;</span><br><span class="line">            imgNode.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">// 代理模式</span><br><span class="line">var ProxyImage = (function()&#123;</span><br><span class="line">    var img = new Image();</span><br><span class="line">    img.onload = function()&#123;</span><br><span class="line">        myImage.setSrc(this.src);</span><br><span class="line">    &#125;;</span><br><span class="line">    return &#123;</span><br><span class="line">        setSrc: function(src) &#123;</span><br><span class="line">                         myImage.setSrc(&quot;http://img.lanrentuku.com/img/allimg/1212/5-121204193Q9-50.gif&quot;);</span><br><span class="line">        img.src = src;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">// 调用方式</span><br><span class="line">ProxyImage.setSrc(&quot;https://img.alicdn.com/tps/i4/TB1b_neLXXXXXcoXFXXc8PZ9XXX-130-200.png&quot;);</span><br></pre></td></tr></table></figure>
+<p>优缺点：</p>
+<ol>
+<li>第一种方案一般的方法代码的耦合性太高，一个函数内负责做了几件事情，比如创建img元素，和实现给未加载图片完成之前设置loading加载状态等多项事情，未满足面向对象设计原则中单一职责原则；并且当某个时候不需要代理的时候，需要从myImage 函数内把代码删掉，这样代码耦合性（关联程度）太高。</li>
+<li>第二种方案使用代理模式，其中myImage 函数只负责做一件事，创建img元素加入到页面中，其中的加载loading图片交给代理函数ProxyImage 去做，当图片加载成功后，代理函数ProxyImage 会通知及执行myImage 函数的方法，同时当以后不需要代理对象的话，我们直接可以调用本体对象的方法即可。</li>
+</ol>
+<h3 id="虚拟代理合并http的请求"><a href="#虚拟代理合并http的请求" class="headerlink" title="虚拟代理合并http的请求"></a>虚拟代理合并http的请求</h3><p>比如在做后端系统中，有表格数据，每一条数据前面有复选框按钮，当点击复选框按钮时候，需要获取该id后需要传递给给服务器发送ajax请求，服务器端需要记录这条数据，去请求，如果我们每当点击一下向服务器发送一个http请求的话，对于服务器来说压力比较大，网络请求比较频繁，但是如果现在该系统的实时数据不是很高的话，我们可以通过一个代理函数收集一段时间内(比如说2-3秒)的所有id，一次性发ajax请求给服务器，相对来说网络请求降低了, 服务器压力减少了。</p>
+<p>代理函数做一个暂存的功能，最后一次性提交。</p>
+<h3 id="缓存代理"><a href="#缓存代理" class="headerlink" title="缓存代理"></a>缓存代理</h3><p>缓存代理的含义就是对第一次运行时候进行缓存，当再一次运行相同的时候，直接从缓存里面取，这样做的好处是避免重复一次运算功能，如果运算非常复杂的话，对性能很耗费，那么使用缓存对象可以提高性能。</p>
+<h2 id="发布-订阅模式（观察者模式）"><a href="#发布-订阅模式（观察者模式）" class="headerlink" title="发布-订阅模式（观察者模式）"></a>发布-订阅模式（观察者模式）</h2><p>发布—订阅模式又叫观察者模式，它定义了对象间的一种一对多的关系，让多个观察者对象同时监听某一个主题对象，当一个对象发生改变时，所有依赖于它的对象都将得到通知。</p>
+<p>例如：淘宝收藏店铺，卖家，买家的关系；angular框架的路由</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>支持简单的广播通信，当对象状态发生改变时，会自动通知已经订阅过的对象。</li>
+<li>发布者与订阅者耦合性降低，发布者只管发布一条消息出去，它不关心这条消息如何被订阅者使用，同时，订阅者只监听发布者的事件名，只要发布者的事件名不变，它不管发布者如何改变。</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>  创建订阅者需要消耗一定的时间和内存。</p>
+<h3 id="如何实现发布-订阅模式"><a href="#如何实现发布-订阅模式" class="headerlink" title="如何实现发布-订阅模式"></a>如何实现发布-订阅模式</h3><ol>
+<li><p>首先要想好谁是发布者（比如卖家）。</p>
+</li>
+<li><p>然后给发布者添加一个缓存列表，用于存放回调函数来通知订阅者(比如上面的买家收藏了卖家的店铺，卖家通过收藏了该店铺的一个列表名单)。</p>
+</li>
+<li><p>最后就是发布消息，发布者遍历这个缓存列表，依次触发里面存放的订阅者回调函数。（在callback函数中传入描述商品信息的参数）。</p>
+<p>简单的发布-订阅模式</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var shoeObj = &#123;&#125;; // 定义发布者  淘宝店铺卖家</span><br><span class="line">shoeObj.list = []; // 缓存列表 存放订阅者回调函数</span><br><span class="line">        </span><br><span class="line">// 增加订阅者</span><br><span class="line">shoeObj.listen = function(fn) &#123;</span><br><span class="line">    shoeObj.list.push(fn);  // 订阅消息添加到缓存列表</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 发布消息</span><br><span class="line">shoeObj.trigger = function()&#123;</span><br><span class="line">    for(var i = 0,fn; fn = this.list[i++];) &#123;</span><br><span class="line">        fn.apply(this,arguments); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 小红订阅如下消息</span><br><span class="line">shoeObj.listen(function(color,size)&#123;</span><br><span class="line">    console.log(&quot;颜色是：&quot;+color);</span><br><span class="line">    console.log(&quot;尺码是：&quot;+size);  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 小花订阅如下消息</span><br><span class="line">shoeObj.listen(function(color,size)&#123;</span><br><span class="line">    console.log(&quot;再次打印颜色是：&quot;+color);</span><br><span class="line">    console.log(&quot;再次打印尺码是：&quot;+size); </span><br><span class="line">&#125;);</span><br><span class="line">shoeObj.trigger(&quot;红色&quot;,40);</span><br><span class="line">shoeObj.trigger(&quot;黑色&quot;,42);</span><br></pre></td></tr></table></figure>
+<pre><code>增强的发布-订阅模式（订阅者只订阅自己想要看的东西）
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">var shoeObj = &#123;&#125;; // 定义发布者</span><br><span class="line">shoeObj.list = []; // 缓存列表 存放订阅者回调函数</span><br><span class="line">        </span><br><span class="line">// 增加订阅者</span><br><span class="line">shoeObj.listen = function(key,fn) &#123;</span><br><span class="line">    if(!this.list[key]) &#123;</span><br><span class="line">        // 如果还没有订阅过此类消息，给该类消息创建一个缓存列表</span><br><span class="line">        this.list[key] = []; </span><br><span class="line">    &#125;</span><br><span class="line">    this.list[key].push(fn);  // 订阅消息添加到缓存列表</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 发布消息</span><br><span class="line">shoeObj.trigger = function()&#123;</span><br><span class="line">    var key = Array.prototype.shift.call(arguments); // 取出消息类型名称</span><br><span class="line">    var fns = this.list[key];  // 取出该消息对应的回调函数的集合</span><br><span class="line"></span><br><span class="line">    // 如果没有订阅过该消息的话，则返回</span><br><span class="line">    if(!fns || fns.length === 0) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(var i = 0,fn; fn = fns[i++]; ) &#123;</span><br><span class="line">        fn.apply(this,arguments); // arguments 是发布消息时附送的参数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 小红订阅如下消息</span><br><span class="line">shoeObj.listen(&apos;red&apos;,function(size)&#123;</span><br><span class="line">    console.log(&quot;尺码是：&quot;+size);  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 小花订阅如下消息</span><br><span class="line">shoeObj.listen(&apos;black&apos;,function(size)&#123;</span><br><span class="line">    console.log(&quot;再次打印尺码是：&quot;+size); </span><br><span class="line">&#125;);</span><br><span class="line">shoeObj.trigger(&quot;red&quot;,40);</span><br><span class="line">shoeObj.trigger(&quot;black&quot;,42);</span><br></pre></td></tr></table></figure>
+<h3 id="发布-订阅模式代码封装"><a href="#发布-订阅模式代码封装" class="headerlink" title="发布-订阅模式代码封装"></a>发布-订阅模式代码封装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var event = &#123;</span><br><span class="line">    list: [],</span><br><span class="line">    listen: function(key,fn) &#123;</span><br><span class="line">        if(!this.list[key]) &#123;</span><br><span class="line">            this.list[key] = [];</span><br><span class="line">        &#125;</span><br><span class="line">        // 订阅的消息添加到缓存列表中</span><br><span class="line">        this.list[key].push(fn);</span><br><span class="line">    &#125;,</span><br><span class="line">    trigger: function()&#123;</span><br><span class="line">        var key = Array.prototype.shift.call(arguments);</span><br><span class="line">        var fns = this.list[key];</span><br><span class="line">        // 如果没有订阅过该消息的话，则返回</span><br><span class="line">        if(!fns || fns.length === 0) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(var i = 0,fn; fn = fns[i++];) &#123;</span><br><span class="line">            fn.apply(this,arguments);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>测试封装代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var initEvent = function(obj) &#123;</span><br><span class="line">    for(var i in event) &#123;  //遍历</span><br><span class="line">        obj[i] = event[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var shoeObj = &#123;&#125;;</span><br><span class="line">initEvent(shoeObj);</span><br><span class="line"></span><br><span class="line">// 小红订阅如下消息</span><br><span class="line">shoeObj.listen(&apos;red&apos;,function(size)&#123;</span><br><span class="line">    console.log(&quot;尺码是：&quot;+size);  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 小花订阅如下消息</span><br><span class="line">shoeObj.listen(&apos;black&apos;,function(size)&#123;</span><br><span class="line">    console.log(&quot;再次打印尺码是：&quot;+size); </span><br><span class="line">&#125;);</span><br><span class="line">shoeObj.trigger(&quot;red&quot;,40);</span><br><span class="line">shoeObj.trigger(&quot;black&quot;,42);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hhhh.github.io/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hhhh.github.io/2018/04/25/js数据类型和类型检测/" rel="next" title="JavaScript数据类型和类型检测">
+                <i class="fa fa-chevron-left"></i> JavaScript数据类型和类型检测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hhhh.github.io/2018/06/05/初识angular/" rel="prev" title="初识angular">
+                初识angular <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">April Han</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/hhhh.github.io/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript常用设计模式详解"><span class="nav-number">1.</span> <span class="nav-text">JavaScript常用设计模式详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.1.</span> <span class="nav-text">工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单工厂模式"><span class="nav-number">1.1.1.</span> <span class="nav-text">简单工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂工厂模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">复杂工厂模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单体模式-单例模式"><span class="nav-number">1.2.</span> <span class="nav-text">单体模式(单例模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单体模式实现弹窗"><span class="nav-number">1.2.1.</span> <span class="nav-text">单体模式实现弹窗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装单体模式函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">封装单体模式函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块模式"><span class="nav-number">1.3.</span> <span class="nav-text">模块模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理模式"><span class="nav-number">1.4.</span> <span class="nav-text">代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用虚拟代理实现图片预加载"><span class="nav-number">1.4.1.</span> <span class="nav-text">使用虚拟代理实现图片预加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟代理合并http的请求"><span class="nav-number">1.4.2.</span> <span class="nav-text">虚拟代理合并http的请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存代理"><span class="nav-number">1.4.3.</span> <span class="nav-text">缓存代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布-订阅模式（观察者模式）"><span class="nav-number">1.5.</span> <span class="nav-text">发布-订阅模式（观察者模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.5.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.5.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何实现发布-订阅模式"><span class="nav-number">1.5.3.</span> <span class="nav-text">如何实现发布-订阅模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布-订阅模式代码封装"><span class="nav-number">1.5.4.</span> <span class="nav-text">发布-订阅模式代码封装</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">April Han</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hhhh.github.io/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hhhh.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hhhh.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hhhh.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/hhhh.github.io/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/hhhh.github.io/live2dw/assets/kesyoban.model.json"},"display":{"position":"left","width":160,"height":320},"mobile":{"show":true},"log":false});</script></body>
+</html>
